@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeena Mondal — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --bg-raised: #121215;
+    --bg-card: #16161a;
+    --line: #232328;
+    --text: #f2f0ee;
+    --text-dim: #8b8b93;
+    --text-faint: #55555d;
+    --pink: #ff5fa2;
+    --pink-soft: rgba(255, 95, 162, 0.14);
+    --pink-glow: rgba(255, 95, 162, 0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  ::selection { background: var(--pink-glow); color: var(--text); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- background trace ---------- */
+  .bg-trace {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(10, 10, 12, 0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  .logo {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--pink);
+    box-shadow: 0 0 8px var(--pink-glow);
+    flex-shrink: 0;
+  }
+  .navlinks {
+    display: flex;
+    gap: 28px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .navlinks a { transition: color 0.15s; }
+  .navlinks a:hover { color: var(--pink); }
+  @media (max-width: 560px) { .navlinks { display: none; } }
+
+  /* ---------- hero ---------- */
+  header.hero {
+    position: relative;
+    z-index: 1;
+    padding: 88px 0 64px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    color: var(--pink);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--pink);
+  }
+  h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: clamp(38px, 7vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  h1 .accent { color: var(--pink); }
+  .hero p.lede {
+    max-width: 520px;
+    color: var(--text-dim);
+    font-size: 16px;
+    line-height: 1.65;
+    margin-bottom: 32px;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12.5px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    transition: all 0.18s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn.primary {
+    background: var(--pink);
+    color: #0a0a0c;
+    border-color: var(--pink);
+    font-weight: 500;
+  }
+  .btn.primary:hover { box-shadow: 0 0 24px var(--pink-glow); transform: translateY(-1px); }
+  .btn.ghost { color: var(--text-dim); }
+  .btn.ghost:hover { border-color: var(--pink); color: var(--pink); }
+
+  /* waveform under hero */
+  .waveform {
+    margin-top: 56px;
+    width: 100%;
+    height: 64px;
+    display: block;
+  }
+  .waveform path {
+    fill: none;
+    stroke: var(--pink);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 6px var(--pink-glow));
+  }
+
+  /* ---------- sections ---------- */
+  section { position: relative; z-index: 1; padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .section-num {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  /* about */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+  }
+  @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-grid p { color: var(--text-dim); font-size: 15px; margin-bottom: 14px; }
+  .about-grid strong { color: var(--text); font-weight: 500; }
+
+  .fact-list { border-left: 1px solid var(--line); padding-left: 20px; }
+  .fact {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .fact:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .fact .k {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    color: var(--pink);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .fact .v { font-size: 14px; color: var(--text-dim); }
+
+  /* project card */
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .project-card:hover { border-color: var(--pink-glow); }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--pink), transparent);
+    opacity: 0.7;
+  }
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .project-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+  }
+  .project-tag {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    color: var(--pink);
+    background: var(--pink-soft);
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .project-card p {
+    color: var(--text-dim);
+    font-size: 14.5px;
+    margin-bottom: 18px;
+    max-width: 560px;
+  }
+  .project-stack {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .chip {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text-dim);
+    border: 1px solid var(--line);
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  .project-link {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12.5px;
+    color: var(--pink);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .project-link:hover { text-decoration: underline; }
+
+  /* skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+  }
+  .skill-pill {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 13.5px;
+    color: var(--text-dim);
+    transition: all 0.15s;
+  }
+  .skill-pill:hover { border-color: var(--pink-glow); color: var(--text); }
+
+  /* contact */
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  footer {
+    padding: 32px 0 48px;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text-faint);
+  }
+</style>
+</head>
+<body>
+
+<svg class="bg-trace" viewBox="0 0 1000 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M -50 260 L 900 260" stroke="#1a1a1e" stroke-width="1"/>
+  <path d="M -50 620 L 900 620" stroke="#1a1a1e" stroke-width="1"/>
+</svg>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span>JEENA.MONDAL</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">2nd Year · Computer Science &amp; Engineering</div>
+    <h1>Jeena Mondal<span class="accent">.</span><br>Building, learning, shipping.</h1>
+    <p class="lede">CSE undergraduate exploring software and embedded systems — from Python scripts and DSA practice to hardware projects that bridge code and the physical world.</p>
+    <div class="hero-cta">
+      <a class="btn primary" href="#work">View work</a>
+      <a class="btn ghost" href="https://github.com/jeenamondal" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/jeena-mondal-8365a2368/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+
+    <svg class="waveform" viewBox="0 0 800 64" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path id="ekgPath" d="M0,32 L120,32 L140,32 L152,10 L164,52 L176,32 L200,32 L720,32 L740,32 L752,10 L764,52 L776,32 L800,32" />
+    </svg>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">01</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div>
+        <p>I'm a <strong>2nd year Computer Science &amp; Engineering</strong> student. I spend most of my time writing Python, working through data structures and algorithms, and picking up new languages and tools as coursework and projects demand it.</p>
+        <p>Alongside coursework, I like building things end-to-end — including hardware projects that go beyond a typical CS curriculum, like an embedded system that reads biosignals from the body to control a robot.</p>
+      </div>
+      <div class="fact-list">
+        <div class="fact">
+          <div class="k">Year</div>
+          <div class="v">2nd year, B.Tech CSE</div>
+        </div>
+        <div class="fact">
+          <div class="k">Education</div>
+          <div class="v">Lovely Professional University (LPU), Punjab</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">02</span><h2>Projects</h2></div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-title">Brain-Controlled Buggy</div>
+        <div class="project-tag">Embedded · Signal Processing</div>
+      </div>
+      <p>A robot buggy driven by biosignals (EEG + EMG) read from a forehead electrode on a BioAmp EXG Pill, instead of a joystick. Muscle-artifact spikes trigger go / stop / turn commands, while a slower background signal modulates driving speed.</p>
+      <div class="project-stack">
+        <span class="chip">C++ / Arduino</span>
+        <span class="chip">BioAmp EXG Pill</span>
+        <span class="chip">Motor control</span>
+      </div>
+      <a class="project-link" href="https://github.com/jeenamondal/brain_controlled_buggy" target="_blank" rel="noopener">
+        View repository ↗
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">03</span><h2>Skills</h2></div>
+    <div class="skills-grid">
+      <div class="skill-pill">Python</div>
+      <div class="skill-pill">C / C++</div>
+      <div class="skill-pill">Data Structures &amp; Algorithms</div>
+      <div class="skill-pill">Arduino / Embedded C</div>
+      <div class="skill-pill">Git / GitHub</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">04</span><h2>Get in touch</h2></div>
+    <div class="contact-row">
+      <a class="btn primary" href="https://www.linkedin.com/in/jeena-mondal-8365a2368/" target="_blank" rel="noopener">Message me on LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/jeenamondal" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 JEENA MONDAL
+</footer>
+
+</body>
+</html>
