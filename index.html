@@ -96,9 +96,10 @@
                     <a class="hover:text-black" href="#resume-certificate">Certificates</a>
                     <a class="hover:text-black" href="#projects">Projects</a>
                     <a class="hover:text-black" href="#skills">Skills</a>
-                    <button type="button" id="theme-toggle-mobile" class="p-1 rounded-full text-neutral-600 hover:text-black" aria-label="Toggle theme">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block dark:hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    <button type="button" id="theme-toggle-mobile" aria-label="Toggle theme">
+                      <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                      <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                      <span id="mobile-theme-text">Dark</span>
                     </button>
                   </div>
                 </div>
@@ -459,18 +460,7 @@
 
                   <!-- GitHub-Style Polygon Radar Graph -->
                   
-<div class="mt-8 px-4 py-5 border-dashed border-y border-neutral-100 bg-neutral-50/30 rounded-lg">
-  <div class="flex items-center justify-between mb-2">
-    <div>
-      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400">Skill Competency Radar</h2>
-      <p class="text-xs text-neutral-700 font-medium mt-0.5">GitHub-Style Hexagonal Polygon Map</p>
-    </div>
-    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200/60 rounded-full">
-      <span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-      Profile Radar
-    </span>
-  </div>
-
+<div class="my-6 px-4 py-3 border-dashed border-y border-neutral-100 bg-neutral-50/20 rounded-lg flex items-center justify-center">
   <!-- SVG Polygon Radar Chart -->
   <div class="relative w-full flex items-center justify-center py-2">
     <svg viewBox="0 0 520 300" class="w-full max-w-[460px] h-auto select-none overflow-visible" xmlns="http://www.w3.org/2000/svg">
@@ -507,66 +497,55 @@
 
       <!-- Interactive Nodes on Polygon Vertices -->
       <!-- Node 0: Python (95%) -->
-      <g class="cursor-pointer group" onclick="selectSkillNode(0)">
+      <g class="cursor-pointer group">
         <circle cx="260.0" cy="69.2" r="5" fill="#ffffff" stroke="#0284c7" stroke-width="2.5" filter="url(#nodeGlow)"/>
       </g>
       <!-- Node 1: C / C++ (90%) -->
-      <g class="cursor-pointer group" onclick="selectSkillNode(1)">
+      <g class="cursor-pointer group">
         <circle cx="326.3" cy="111.8" r="5" fill="#ffffff" stroke="#0ea5e9" stroke-width="2.5" filter="url(#nodeGlow)"/>
       </g>
       <!-- Node 2: React (85%) -->
-      <g class="cursor-pointer group" onclick="selectSkillNode(2)">
+      <g class="cursor-pointer group">
         <circle cx="322.6" cy="186.1" r="5" fill="#ffffff" stroke="#38bdf8" stroke-width="2.5" filter="url(#nodeGlow)"/>
       </g>
       <!-- Node 3: PostgreSQL (80%) -->
-      <g class="cursor-pointer group" onclick="selectSkillNode(3)">
+      <g class="cursor-pointer group">
         <circle cx="260.0" cy="218.0" r="5" fill="#ffffff" stroke="#818cf8" stroke-width="2.5" filter="url(#nodeGlow)"/>
       </g>
       <!-- Node 4: AI / ML (88%) -->
-      <g class="cursor-pointer group" onclick="selectSkillNode(4)">
+      <g class="cursor-pointer group">
         <circle cx="195.2" cy="187.4" r="5" fill="#ffffff" stroke="#0ea5e9" stroke-width="2.5" filter="url(#nodeGlow)"/>
       </g>
       <!-- Node 5: Git & Tools (85%) -->
-      <g class="cursor-pointer group" onclick="selectSkillNode(5)">
+      <g class="cursor-pointer group">
         <circle cx="197.4" cy="113.9" r="5" fill="#ffffff" stroke="#0284c7" stroke-width="2.5" filter="url(#nodeGlow)"/>
       </g>
 
       <!-- Outside Perimeter Labels with ample padding (NO OVERLAP) -->
-      <text x="260.0" y="44" text-anchor="middle" class="font-mono text-[11px] fill-neutral-800 font-medium radar-label cursor-pointer" onclick="selectSkillNode(0)">
+      <text x="260.0" y="44" text-anchor="middle" class="font-mono text-[11px] fill-neutral-800 font-medium radar-label">
         Python <tspan fill="#0284c7" font-weight="600" class="radar-score">95%</tspan>
       </text>
 
-      <text x="350.0" y="112" text-anchor="start" class="font-mono text-[11px] fill-neutral-800 font-medium radar-label cursor-pointer" onclick="selectSkillNode(1)">
+      <text x="350.0" y="112" text-anchor="start" class="font-mono text-[11px] fill-neutral-800 font-medium radar-label">
         C / C++ <tspan fill="#0ea5e9" font-weight="600" class="radar-score">90%</tspan>
       </text>
 
-      <text x="350.0" y="196" text-anchor="start" class="font-mono text-[11px] fill-neutral-800 font-medium radar-label cursor-pointer" onclick="selectSkillNode(2)">
+      <text x="350.0" y="196" text-anchor="start" class="font-mono text-[11px] fill-neutral-800 font-medium radar-label">
         React <tspan fill="#38bdf8" font-weight="600" class="radar-score">85%</tspan>
       </text>
 
-      <text x="260.0" y="260" text-anchor="middle" class="font-mono text-[11px] fill-neutral-800 font-medium radar-label cursor-pointer" onclick="selectSkillNode(3)">
+      <text x="260.0" y="260" text-anchor="middle" class="font-mono text-[11px] fill-neutral-800 font-medium radar-label">
         PostgreSQL <tspan fill="#818cf8" font-weight="600" class="radar-score">80%</tspan>
       </text>
 
-      <text x="170.0" y="196" text-anchor="end" class="font-mono text-[11px] fill-neutral-800 font-medium radar-label cursor-pointer" onclick="selectSkillNode(4)">
+      <text x="170.0" y="196" text-anchor="end" class="font-mono text-[11px] fill-neutral-800 font-medium radar-label">
         <tspan fill="#0ea5e9" font-weight="600" class="radar-score">88%</tspan> AI / ML
       </text>
 
-      <text x="170.0" y="112" text-anchor="end" class="font-mono text-[11px] fill-neutral-800 font-medium radar-label cursor-pointer" onclick="selectSkillNode(5)">
+      <text x="170.0" y="112" text-anchor="end" class="font-mono text-[11px] fill-neutral-800 font-medium radar-label">
         <tspan fill="#0284c7" font-weight="600" class="radar-score">85%</tspan> Git &amp; Tools
       </text>
     </svg>
-  </div>
-
-  <!-- Dynamic Active Domain Inspector Card -->
-  <div id="skill-inspector" class="mt-2 p-3 bg-white border border-neutral-200/80 rounded-md transition-all">
-    <div class="flex items-center justify-between">
-      <span id="inspect-title" class="text-xs font-medium text-neutral-900">Python Programming &amp; Core DSA</span>
-      <span id="inspect-metric" class="text-xs font-mono font-medium text-sky-600">95% Proficiency</span>
-    </div>
-    <p id="inspect-desc" class="text-xs font-light text-neutral-500 mt-1 leading-relaxed">
-      Core expertise in Python logic, algorithmic design, OOP principles, data manipulation, and high-performance problem solving.
-    </p>
   </div>
 </div>
 
@@ -640,11 +619,16 @@
           </div>
 
           <!-- Dark Mode Toggle Switch -->
-          <div class="flex justify-end items-center w-full px-4 mb-1 border-dashed border-y border-neutral-100">
-            <div class="flex justify-center items-center gap-3 border-dashed border-r p-1 border-neutral-100">
-              <p class="text-sm text-neutral-500">Dark Theme</p>
-              <button type="button" role="switch" id="dark-mode-toggle" aria-checked="false" class="relative inline-flex h-5 w-8.5 cursor-pointer items-center rounded-full transition-colors duration-200 bg-neutral-300">
-                <span id="dark-mode-thumb" class="inline-block h-4 w-4 rounded-full bg-white shadow transition-transform duration-200 translate-x-0"></span>
+          <div class="flex justify-end items-center w-full px-4 mb-2 border-dashed border-y border-neutral-100">
+            <div class="flex justify-center items-center gap-3 border-dashed border-r py-2 px-1 border-neutral-100">
+              <div class="flex items-center gap-1.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-700 dark:text-amber-400"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                <p class="text-xs font-mono font-medium text-neutral-900 dark:text-neutral-100 tracking-tight" id="sidebar-theme-label">Dark Theme</p>
+              </div>
+              <button type="button" role="switch" id="dark-mode-toggle" aria-checked="false" class="relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full transition-colors duration-200 bg-neutral-300 dark:bg-sky-600 border border-neutral-300 dark:border-sky-500 shadow-inner" aria-label="Toggle dark theme">
+                <span id="dark-mode-thumb" class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-white shadow-md transition-transform duration-200 translate-x-0.5">
+                  <span class="size-1.5 rounded-full bg-neutral-400 dark:bg-sky-600"></span>
+                </span>
               </button>
             </div>
           </div>
@@ -663,6 +647,16 @@
       </div>
     </div>
   </div>
+
+  <!-- Floating High-Visibility Dark Mode Toggle Pill (Always visible across all devices) -->
+  <div id="floating-theme-toggle-container">
+    <button type="button" id="floating-theme-toggle" aria-label="Toggle theme">
+      <svg class="theme-icon-moon text-amber-300" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      <svg class="theme-icon-sun text-amber-500" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      <span id="floating-theme-text">Dark Mode</span>
+    </button>
+  </div>
+
 
   <!-- Interactive Certificate Preview Modal -->
   <div id="cert-modal" class="fixed inset-0 z-[99999] hidden items-center justify-center p-4 bg-black/60 cert-modal-backdrop" role="dialog" aria-modal="true">
@@ -722,57 +716,62 @@
     setupCopy('copy-email-mobile', 'copy-feedback-mobile');
     setupCopy('copy-email-bottom', 'copy-feedback-bottom');
 
-    // Dark Theme Toggle
+    // Dark Theme Controller (Synchronizing Floating Pill, Mobile Navbar, and Desktop Sidebar)
     const darkToggle = document.getElementById('dark-mode-toggle');
     const darkThumb = document.getElementById('dark-mode-thumb');
     const darkMobile = document.getElementById('theme-toggle-mobile');
+    const floatingToggle = document.getElementById('floating-theme-toggle');
+    const floatingThemeText = document.getElementById('floating-theme-text');
+    const mobileThemeText = document.getElementById('mobile-theme-text');
+    const sidebarThemeLabel = document.getElementById('sidebar-theme-label');
 
     function setDarkMode(isDark) {
       if (isDark) {
         document.documentElement.classList.add('dark');
         if (darkToggle && darkThumb) {
           darkToggle.setAttribute('aria-checked', 'true');
-          darkToggle.classList.remove('bg-neutral-300');
-          darkToggle.classList.add('bg-sky-600');
-          darkThumb.classList.remove('translate-x-0');
-          darkThumb.classList.add('translate-x-4');
         }
+        if (floatingThemeText) floatingThemeText.textContent = 'Light Mode';
+        if (mobileThemeText) mobileThemeText.textContent = 'Light';
+        if (sidebarThemeLabel) sidebarThemeLabel.textContent = 'Dark Theme';
       } else {
         document.documentElement.classList.remove('dark');
         if (darkToggle && darkThumb) {
           darkToggle.setAttribute('aria-checked', 'false');
-          darkToggle.classList.remove('bg-sky-600');
-          darkToggle.classList.add('bg-neutral-300');
-          darkThumb.classList.remove('translate-x-4');
-          darkThumb.classList.add('translate-x-0');
         }
+        if (floatingThemeText) floatingThemeText.textContent = 'Dark Mode';
+        if (mobileThemeText) mobileThemeText.textContent = 'Dark';
+        if (sidebarThemeLabel) sidebarThemeLabel.textContent = 'Light Theme';
       }
       try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch(e) {}
     }
 
     // Initialize theme
+    const urlParams = new URLSearchParams(window.location.search);
+    const themeParam = urlParams.get('theme');
     const savedTheme = (() => {
       try { return localStorage.getItem('theme'); } catch(e) { return null; }
     })();
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    if (themeParam === 'light') {
+      setDarkMode(false);
+    } else if (themeParam === 'dark') {
+      setDarkMode(true);
+    } else if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
       setDarkMode(true);
     } else {
       setDarkMode(false);
     }
 
-    if (darkToggle) {
-      darkToggle.addEventListener('click', () => {
-        const isCurrentlyDark = document.documentElement.classList.contains('dark');
-        setDarkMode(!isCurrentlyDark);
-      });
+    function toggleTheme() {
+      const isCurrentlyDark = document.documentElement.classList.contains('dark');
+      setDarkMode(!isCurrentlyDark);
     }
-    if (darkMobile) {
-      darkMobile.addEventListener('click', () => {
-        const isCurrentlyDark = document.documentElement.classList.contains('dark');
-        setDarkMode(!isCurrentlyDark);
-      });
-    }
+
+    if (floatingToggle) floatingToggle.addEventListener('click', toggleTheme);
+    if (darkToggle) darkToggle.addEventListener('click', toggleTheme);
+    if (darkMobile) darkMobile.addEventListener('click', toggleTheme);
+
 
     // Grid Mode Toggle
     const gridToggle = document.getElementById('grid-mode-toggle');
@@ -859,53 +858,6 @@
         closeCertModal();
       }
     });
-
-    // GitHub-like Skill Radar Polygon Interactivity
-    const radarData = [
-      {
-        title: "Python Programming & Algorithmic Logic",
-        metric: "95% Relative Score",
-        desc: "Core expertise in Python syntax, OOP concepts, algorithm complexity, exception handling, data structures, and automation scripting."
-      },
-      {
-        title: "C & C++ / Hardware Firmware",
-        metric: "90% Relative Score",
-        desc: "Low-level memory management, embedded C/C++, Arduino framework, and real-time microcontroller hardware interfacing."
-      },
-      {
-        title: "Frontend Engineering (HTML, CSS, React)",
-        metric: "85% Relative Score",
-        desc: "Semantic HTML5, modern CSS3 styling, responsive layouts, and reactive single-page user interfaces with React.js."
-      },
-      {
-        title: "Relational Database Architecture (PostgreSQL)",
-        metric: "80% Relative Score",
-        desc: "Structured schema design, SQL queries, relational normalization, indexing, and persistent database storage."
-      },
-      {
-        title: "Artificial Intelligence & Signal Telemetry",
-        metric: "88% Relative Score",
-        desc: "ExiosAI AI/ML internship training, BioAmp EEG/EMG signal interpretation, beta-wave pattern mapping, and machine learning models."
-      },
-      {
-        title: "Version Control & Developer Tools (Git, GitHub)",
-        metric: "85% Relative Score",
-        desc: "Git workflow, version control, branching, repository management, Postman API testing, and collaborative engineering."
-      }
-    ];
-
-    function selectSkillNode(idx) {
-      const item = radarData[idx];
-      if (!item) return;
-      const titleEl = document.getElementById('inspect-title');
-      const metricEl = document.getElementById('inspect-metric');
-      const descEl = document.getElementById('inspect-desc');
-      if (titleEl && metricEl && descEl) {
-        titleEl.textContent = item.title;
-        metricEl.textContent = item.metric;
-        descEl.textContent = item.desc;
-      }
-    }
   </script>
 </body>
 </html>
