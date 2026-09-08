@@ -132,9 +132,15 @@
       transform: translateY(-2px);
     }
 
-    /* Smooth container scrolling */
+    /* Smooth container scrolling & mobile header offset */
     main {
       scroll-behavior: smooth;
+      scroll-padding-top: 4.25rem;
+    }
+    @media (min-width: 1250px) {
+      main {
+        scroll-padding-top: 0;
+      }
     }
 
     /* Sidebar Navigation Highlight & Interactive States */
@@ -233,6 +239,60 @@
     .dark .mobile-nav-item.active::after {
       background-color: #22d3ee;
     }
+
+    /* Mobile Fixed Header & Vertical Grid Alignment */
+    .mobile-top-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      height: 3.25rem; /* 52px */
+      display: flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+    }
+    .dark .mobile-top-header {
+      background-color: rgba(9, 9, 11, 0.85);
+      border-bottom-color: rgba(39, 39, 42, 0.9);
+    }
+    @media (min-width: 1250px) {
+      .mobile-top-header {
+        display: none !important;
+      }
+    }
+
+    .mobile-header-inner {
+      width: 32rem; /* matches w-lg (512px) */
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem; /* matches px-4 */
+      padding-right: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      border-left: 1px dashed rgba(229, 231, 235, 0.9);
+      border-right: 1px dashed rgba(229, 231, 235, 0.9);
+    }
+    .dark .mobile-header-inner {
+      border-left-color: rgba(39, 39, 42, 0.9);
+      border-right-color: rgba(39, 39, 42, 0.9);
+    }
+
+    /* Main Feed Column Vertical Spacing: ensures hero content clears mobile header */
+    .hero-column-wrapper {
+      padding-top: 4.75rem; /* 76px: comfortably below 52px mobile header with 24px breathing space */
+    }
+    @media (min-width: 1250px) {
+      .hero-column-wrapper {
+        padding-top: 10rem; /* 160px on desktop: exactly aligns with left and right sidebar pt-40 */
+      }
+    }
   </style>
 
   <link rel="icon" href="images/logo.png" type="image/png"/>
@@ -328,28 +388,28 @@
         <!-- Center Main Content Feed -->
         <main class="h-full flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide">
           <div id="home" class="flex w-full flex-col items-center justify-center">
-            <div class="w-lg max-w-full border-x border-dashed h-full border-neutral-200 dark:border-neutral-800 pt-32 sm:pt-40">
+            <div class="hero-column-wrapper w-lg max-w-full border-x border-dashed h-full border-neutral-200 dark:border-neutral-800">
 
               <!-- Mobile Top Navbar -->
-              <div class="fixed inset-x-0 top-0 z-9999 min-[1250px]:hidden border-b border-neutral-200/10 bg-white/70 dark:bg-neutral-950/70 backdrop-blur-xl backdrop-saturate-150 border-neutral-100 dark:border-neutral-800">
-                <div class="mx-auto flex w-lg max-w-full items-center justify-between px-3.5 sm:px-4.5 py-3 sm:py-4">
-                  <a href="#home" class="shrink-0">
-                    <img alt="Logo" class="h-auto w-5 select-none rounded-sm" src="images/logo.png"/>
+              <header id="mobile-header" class="mobile-top-header" role="banner">
+                <div class="mobile-header-inner">
+                  <a href="#home" class="shrink-0 flex items-center" aria-label="Go to Home">
+                    <img alt="Jeena Mondal Logo" class="h-auto w-5 select-none rounded-sm" src="images/logo.png"/>
                   </a>
-                  <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 overflow-x-auto scrollbar-hide">
+                  <nav class="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 overflow-x-auto scrollbar-hide" aria-label="Mobile Navigation">
                     <a class="mobile-nav-item hover:text-black dark:hover:text-white whitespace-nowrap" href="#experience">Experience</a>
                     <a class="mobile-nav-item hover:text-black dark:hover:text-white whitespace-nowrap" href="#resume-certificate">Certificates</a>
                     <a class="mobile-nav-item hover:text-black dark:hover:text-white whitespace-nowrap" href="#projects">Projects</a>
                     <a class="mobile-nav-item hover:text-black dark:hover:text-white whitespace-nowrap" href="#skills">Skills</a>
                     <a class="mobile-nav-item hover:text-black dark:hover:text-white whitespace-nowrap" href="#contact">Contact</a>
-                  </div>
+                  </nav>
                 </div>
-              </div>
+              </header>
 
               <!-- Hero Section -->
               <section id="hero" class="flex w-full flex-col items-center justify-center">
                 <div class="w-lg max-w-full">
-                  <div class="flex items-center justify-start px-3.5 sm:px-4.5 py-4 sm:py-5 gap-3.5 sm:gap-5 border-dashed border-y border-neutral-100 dark:border-neutral-800">
+                  <div class="flex items-center justify-start px-4 py-4 sm:py-5 gap-4 sm:gap-5 border-dashed border-y border-neutral-100 dark:border-neutral-800">
                     <div id="hero-avatar-box" class="hero-avatar-box group cursor-pointer shrink-0">
                       <img alt="Jeena Mondal Profile" id="hero-pfp" class="hero-avatar-img select-none" src="images/jeena_avatar.jpg"/>
                       <img alt="Profile Wave" aria-hidden="true" class="hero-wave-hand group-hover:animate-[wave_1.6s_ease-in-out_infinite]" src="images/waving-hand.webp"/>
@@ -1149,7 +1209,7 @@
     function updateActiveNavSection() {
       if (!scrollContainer) return;
       const mainRect = scrollContainer.getBoundingClientRect();
-      const threshold = mainRect.top + 160;
+      const threshold = mainRect.top + (window.innerWidth < 1250 ? 80 : 160);
 
       let currentId = 'home';
       for (const item of trackedSections) {
@@ -1186,8 +1246,13 @@
       setTimeout(() => {
         const hashTarget = document.querySelector(window.location.hash);
         if (hashTarget && scrollContainer) {
-          const targetTop = hashTarget.getBoundingClientRect().top - scrollContainer.getBoundingClientRect().top + scrollContainer.scrollTop - 20;
-          scrollContainer.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+          if (window.location.hash === '#home' || window.location.hash === '#hero') {
+            scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            const headerOffset = window.innerWidth < 1250 ? 64 : 20;
+            const targetTop = hashTarget.getBoundingClientRect().top - scrollContainer.getBoundingClientRect().top + scrollContainer.scrollTop - headerOffset;
+            scrollContainer.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+          }
           setTimeout(updateActiveNavSection, 300);
         }
       }, 150);
@@ -1201,11 +1266,16 @@
           const target = href === '#home' ? (document.getElementById('hero') || document.getElementById('home')) : document.querySelector(href);
           if (target && scrollContainer) {
             e.preventDefault();
-            const targetTop = target.getBoundingClientRect().top - scrollContainer.getBoundingClientRect().top + scrollContainer.scrollTop - 20;
-            scrollContainer.scrollTo({
-              top: Math.max(0, targetTop),
-              behavior: 'smooth'
-            });
+            if (href === '#home' || href === '#hero') {
+              scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+              const headerOffset = window.innerWidth < 1250 ? 64 : 20;
+              const targetTop = target.getBoundingClientRect().top - scrollContainer.getBoundingClientRect().top + scrollContainer.scrollTop - headerOffset;
+              scrollContainer.scrollTo({
+                top: Math.max(0, targetTop),
+                behavior: 'smooth'
+              });
+            }
             allNavLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
           }
