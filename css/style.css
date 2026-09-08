@@ -1,3 +1,96 @@
+
+/* Dark Theme Support */
+html.dark {
+  color-scheme: dark;
+}
+html.dark body {
+  background-color: #09090b !important;
+  color: #f4f4f5 !important;
+}
+html.dark .border-neutral-100 {
+  border-color: #27272a !important;
+}
+html.dark .border-neutral-200 {
+  border-color: #3f3f46 !important;
+}
+html.dark .border-neutral-300 {
+  border-color: #52525b !important;
+}
+html.dark .text-neutral-900 {
+  color: #fafafa !important;
+}
+html.dark .text-neutral-800 {
+  color: #f4f4f5 !important;
+}
+html.dark .text-neutral-700 {
+  color: #e4e4e7 !important;
+}
+html.dark .text-neutral-600 {
+  color: #a1a1aa !important;
+}
+html.dark .text-neutral-500 {
+  color: #71717a !important;
+}
+html.dark .text-neutral-400 {
+  color: #71717a !important;
+}
+html.dark .text-black {
+  color: #ffffff !important;
+}
+html.dark .bg-white {
+  background-color: #09090b !important;
+}
+html.dark .bg-white\/60 {
+  background-color: rgba(9, 9, 11, 0.75) !important;
+}
+html.dark .bg-neutral-50\/50, html.dark .bg-neutral-50\/30, html.dark .bg-neutral-50\/70 {
+  background-color: #18181b !important;
+}
+html.dark #left-sidebar, html.dark #right-sidebar {
+  background-color: #09090b !important;
+}
+html.dark [data-slot=browser-mockup-card] {
+  border-color: #3f3f46 !important;
+}
+html.dark [data-slot=browser-mockup-card] > div:first-child {
+  background-color: rgba(24, 24, 27, 0.8) !important;
+  border-color: #3f3f46 !important;
+}
+html.dark [data-slot=browser-mockup-card] span {
+  color: #a1a1aa !important;
+}
+html.dark #cert-modal > div {
+  background-color: #121215 !important;
+  border-color: #27272a !important;
+  color: #fafafa !important;
+}
+html.dark #cert-modal header, html.dark #cert-modal .bg-neutral-50\/70, html.dark #cert-modal .bg-white {
+  background-color: #18181b !important;
+  border-color: #27272a !important;
+}
+html.dark #cert-modal p, html.dark #cert-modal h3, html.dark #cert-modal span {
+  color: #fafafa !important;
+}
+html.dark #skill-inspector {
+  background-color: #121215 !important;
+  border-color: #27272a !important;
+}
+html.dark #skill-inspector p {
+  color: #a1a1aa !important;
+}
+html.dark .radar-grid {
+  stroke: #27272a !important;
+}
+html.dark .radar-axis {
+  stroke: #3f3f46 !important;
+}
+html.dark .radar-label {
+  fill: #e4e4e7 !important;
+}
+html.dark .radar-score {
+  fill: #38bdf8 !important;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Instrument+Serif:ital@0;1&family=Caveat:wght@600&display=swap');
 :root {
   --font-geist-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
